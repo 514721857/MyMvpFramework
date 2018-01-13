@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="lce_content_view_animation_translate_y">40dp</dimen>
+    <item name="contentView" type="id"/>
+    <item name="errorView" type="id"/>
+    <item name="loadingView" type="id"/>
+    <integer name="lce_content_view_show_animation_time">@android:integer/config_longAnimTime</integer>
+    <integer name="lce_error_view_show_animation_time">@android:integer/config_shortAnimTime</integer>
+    <string name="app_name">Dream_Architect_MvpFramework</string>
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+</resources>

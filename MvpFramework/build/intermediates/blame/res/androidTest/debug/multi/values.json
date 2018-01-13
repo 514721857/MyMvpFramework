@@ -1,0 +1,182 @@
+[
+    {
+        "outputFile": "E:\\android studio\\MyMvpFramework\\MvpFramework\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 69,
+                    "endOffset": 120
+                },
+                "from": {
+                    "file": "E:\\android studio\\MyMvpFramework\\MvpFramework\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 69,
+                        "endOffset": 120
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 125,
+                    "endColumn": 40,
+                    "endOffset": 161
+                },
+                "from": {
+                    "file": "E:\\android studio\\MyMvpFramework\\MvpFramework\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 125,
+                        "endColumn": 40,
+                        "endOffset": 161
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 166,
+                    "endColumn": 38,
+                    "endOffset": 200
+                },
+                "from": {
+                    "file": "E:\\android studio\\MyMvpFramework\\MvpFramework\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 166,
+                        "endColumn": 38,
+                        "endOffset": 200
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 205,
+                    "endColumn": 40,
+                    "endOffset": 241
+                },
+                "from": {
+                    "file": "E:\\android studio\\MyMvpFramework\\MvpFramework\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 205,
+                        "endColumn": 40,
+                        "endOffset": 241
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 246,
+                    "endColumn": 103,
+                    "endOffset": 345
+                },
+                "from": {
+                    "file": "E:\\android studio\\MyMvpFramework\\MvpFramework\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 246,
+                        "endColumn": 103,
+                        "endOffset": 345
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 350,
+                    "endColumn": 102,
+                    "endOffset": 448
+                },
+                "from": {
+                    "file": "E:\\android studio\\MyMvpFramework\\MvpFramework\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 350,
+                        "endColumn": 102,
+                        "endOffset": 448
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 453,
+                    "endColumn": 65,
+                    "endOffset": 514
+                },
+                "from": {
+                    "file": "E:\\android studio\\MyMvpFramework\\MvpFramework\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 453,
+                        "endColumn": 65,
+                        "endOffset": 514
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 519,
+                    "endLine": 15,
+                    "endColumn": 12,
+                    "endOffset": 805
+                },
+                "from": {
+                    "file": "E:\\android studio\\MyMvpFramework\\MvpFramework\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 519,
+                        "endLine": 15,
+                        "endColumn": 12,
+                        "endOffset": 805
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 810,
+                    "endLine": 18,
+                    "endColumn": 12,
+                    "endOffset": 965
+                },
+                "from": {
+                    "file": "E:\\android studio\\MyMvpFramework\\MvpFramework\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 810,
+                        "endLine": 18,
+                        "endColumn": 12,
+                        "endOffset": 965
+                    }
+                }
+            }
+        ]
+    }
+]

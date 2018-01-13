@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.tz.architect.mvpframework.test" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="21" />
+
+    <instrumentation
+        android:name="android.test.InstrumentationTestRunner"
+        android:functionalTest="false"
+        android:handleProfiling="false"
+        android:label="Tests for com.tz.architect.mvpframework.test"
+        android:targetPackage="com.tz.architect.mvpframework.test" />
+
+    <uses
+        android:minSdkVersion="8"
+        android:targetSdkVersion="21" />
+
+    <application android:allowBackup="true" >
+        <uses-library android:name="android.test.runner" />
+    </application>
+
+</manifest>
