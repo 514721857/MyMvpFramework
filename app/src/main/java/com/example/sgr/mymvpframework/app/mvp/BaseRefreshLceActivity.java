@@ -35,20 +35,6 @@ public abstract class BaseRefreshLceActivity <M, V extends MvpLceView<M>, P exte
     private Unbinder unbinder;
     private LoadMoreLayout loadMoreLayout;
 
-
-    //下拉刷新
-    @Override
-    public boolean checkCanDoRefresh(PtrFrameLayout frame, View content, View header) {
-        return PtrDefaultHandler.checkContentCanBePulledDown(frame, content, header);
-    }
-//    下拉刷新监听
-    @Override
-    public void onRefreshBegin(PtrFrameLayout frame) {
-        refreshData(true);
-        refreshlayout.refreshComplete();
-
-    }
-
     @BindView(R.id.refreshlayout)
     PullToRefreshLayout refreshlayout;
 
@@ -94,12 +80,26 @@ public abstract class BaseRefreshLceActivity <M, V extends MvpLceView<M>, P exte
 
     }
 
+    //下拉刷新
+    @Override
+    public boolean checkCanDoRefresh(PtrFrameLayout frame, View content, View header) {
+        return PtrDefaultHandler.checkContentCanBePulledDown(frame, content, header);
+    }
+    //    下拉刷新监听
+    @Override
+    public void onRefreshBegin(PtrFrameLayout frame) {
+        refreshData(true);
+        refreshlayout.refreshComplete();
+
+    }
+
     /**
      * 初始化下拉刷新组件
      *
      *
      */
     public void initRefreshView() {
+        refreshlayout.setPtrHandler(this);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         linearLayoutManager = new LinearLayoutManager(this);

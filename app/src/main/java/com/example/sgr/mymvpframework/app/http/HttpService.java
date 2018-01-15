@@ -6,7 +6,9 @@ import com.example.sgr.mymvpframework.app.bean.Result;
 
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
+import retrofit2.Response;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 import rx.Observable;
@@ -30,6 +32,15 @@ public interface HttpService {
 
 
     /**
+     * 这个方法用于测试，返回json数据
+     *
+     * @returnapp/app_mat/page
+     */
+    @GET("app/app_mat/page")
+    Call<ResponseBody> getTest(@Query("access_token") String access_token,@Query("p") int p,@Query("size") int size,@Query("type_c") String type_c);//
+
+
+    /**
      * 获取聚宝盆里的下载列表
      * @param access_token
      * @param p
@@ -37,7 +48,7 @@ public interface HttpService {
      * @param type_c
      * @return
      */
-    @GET("app/app_mat/get_type")
+    @GET("app/app_mat/page")
     Observable<ListBean> getLceJbpList(@Query("access_token") String access_token,@Query("p") int p,@Query("size") int size,@Query("type_c") String type_c);
 
 }

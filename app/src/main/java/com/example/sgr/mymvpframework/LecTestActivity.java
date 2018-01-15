@@ -42,12 +42,17 @@ public class LecTestActivity extends MvpLceActivity<LoginBean,LecTestView,LecPre
         unbinder = ButterKnife.bind(this);
         setLceAnimator(new LoadingAnimator());
     }
-    @OnClick({R.id.btn})
+    @OnClick({R.id.btn,R.id.button})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn:
                 getPresenter().getLogin("text","text");
                 break;
+            case R.id.button:
+                getPresenter().getTest();
+                break;
+
+
 
         }
     }
