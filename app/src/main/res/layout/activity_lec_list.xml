@@ -1,9 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.sgr.mymvpframework.LecListActivity">
+    android:background="@android:color/white">
 
-</android.support.constraint.ConstraintLayout>
+
+    <include
+        android:id="@id/contentView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        layout="@layout/layout_recycleview"/>
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        layout="@layout/layout_loading_view"/>
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        layout="@layout/layout_error_view"/>
+
+</FrameLayout>

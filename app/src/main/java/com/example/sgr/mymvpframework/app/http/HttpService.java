@@ -38,6 +38,6 @@ public interface HttpService {
      * @return
      */
     @GET("app/app_mat/get_type")
-    Observable<Result<ListBean>> getLceJbpList(@Query("access_token") String access_token,@Query("p") int p,@Query("size") int size,@Query("type_c") String type_c);
+    Observable<ListBean> getLceJbpList(@Query("access_token") String access_token,@Query("p") int p,@Query("size") int size,@Query("type_c") String type_c);
 
 }

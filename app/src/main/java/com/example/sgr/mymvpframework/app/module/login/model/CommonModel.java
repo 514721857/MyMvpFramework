@@ -34,20 +34,6 @@ public class CommonModel extends BaseModel {
      * @param onLceHttpResultListener
      */
     public void getLogin(String account,String pwd,final HttpUtils.OnHttpResultListener onLceHttpResultListener) {
-/*        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(getServerUrl())
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create()).build();
-
-        HttpService essenceService = retrofit.create(HttpService.class);*/
- /*       HttpService essenceService = buildService(HttpService.class);
-        essenceService.;
-        buildObserve((MyObservable<ListBean>) essenceService,onLceHttpResultListener);
-
-*/
-
-
-
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(getServerUrl())
@@ -94,7 +80,7 @@ public class CommonModel extends BaseModel {
                  essenceService.getLceJbpList(access_token, p, size, type_c)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<Result<ListBean>>() {
+                .subscribe(new Observer<ListBean>() {
                     @Override
                     public void onCompleted() {
                         onLceHttpResultListener.onCompleted();
@@ -106,7 +92,7 @@ public class CommonModel extends BaseModel {
                     }
 
                     @Override
-                    public void onNext(Result<ListBean> model) {
+                    public void onNext(ListBean model) {
                         onLceHttpResultListener.onResult(model);
                     }
                 });

@@ -2,6 +2,7 @@ package com.example.sgr.mymvpframework;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -69,6 +70,7 @@ public class LecTestActivity extends MvpLceActivity<LoginBean,LecTestView,LecPre
 
     @Override
     public void onLoginResult(LoginBean result) {
+        Log.e("token",result.getAccess_token());
         //登录成功之后，回调ui
         text.setText(result.getName());
     }
