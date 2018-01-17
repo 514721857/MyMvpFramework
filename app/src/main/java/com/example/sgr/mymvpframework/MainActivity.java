@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity{
     }
 
 
-    @OnClick({R.id.btn,R.id.btn2})
+    @OnClick({R.id.btn,R.id.btn2,R.id.btn3,R.id.btn4})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn:
@@ -48,6 +48,14 @@ public class MainActivity extends AppCompatActivity{
             case R.id.btn2:
                 Intent in2=new Intent(this,LecListActivity.class);
                 startActivity(in2);
+                break;
+            case R.id.btn3:
+                Intent in3=new Intent(this,PullToRefreshActivity.class);
+                startActivity(in3);
+                break;
+            case R.id.btn4:
+                Intent in4=new Intent(this,LoadingActivity.class);
+                startActivity(in4);
                 break;
 
         }

@@ -1,32 +1,50 @@
 package com.example.sgr.mymvpframework.app.view;
 
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.sgr.mymvpframework.R;
 import com.ldoublem.loadingviewlib.view.LVCircularSmile;
 import com.tz.mvp.framework.support.lce.impl.animator.DefaultLceAnimator;
 
 /**
- * 作者: Dream on 16/9/24 16:20
- * QQ:510278658
- * E-mail:510278658@qq.com
+ * Created by Administrator on 2018/1/17/017.
  */
 
-public class LoadingAnimator extends DefaultLceAnimator {
-
+public class LoadingAnimatorB extends DefaultLceAnimator {
 
     private LVCircularSmile loading;
 
-
     @Override
     public void showLoading(View loadingView, View contentView, View errorView) {
-        Log.e("LoadingAnimator","showLoading");
         super.showLoading(loadingView, contentView, errorView);
         loading = (LVCircularSmile) loadingView.findViewById(R.id.lv_loading_smile);
+        TextView textview_test=(TextView) loadingView.findViewById(R.id.textview_test);
+        textview_test.setText("wowo");
+        loading.setViewColor(Color.rgb(144, 238, 146));
+        Log.e("LoadingAnimatorB","showLoading");
         loading.startAnim();
+
     }
+/*
+    @Override
+    public void showLoading(View loadingView, View contentView, View errorView) {
+        Log.e("LoadingAnimatorB","showLoading");
+        System.out.println("LoadingAnimatorBshowLoading");
+//        super.showLoading(loadingView, contentView, errorView);
+*/
+/*
+//        loading=new PageStateLayout(c);
+        loading = (LVCircularSmile) loadingView.findViewById(R.id.lv_loading_smile);
+        loading.setViewColor(Color.rgb(144, 238, 146));
+        Log.e("LoadingAnimatorB","showLoading");
+        loading.startAnim();*//*
+
+    }
+*/
 
     @Override
     public void showContent(View loadingView, View contentView, @NonNull View errorView) {
@@ -36,6 +54,7 @@ public class LoadingAnimator extends DefaultLceAnimator {
         loadingView.setVisibility(View.GONE);
         errorView.setVisibility(View.GONE);
         contentView.setVisibility(View.VISIBLE);
+        Log.e("LoadingAnimatorB","showContent");
     }
 
     @Override

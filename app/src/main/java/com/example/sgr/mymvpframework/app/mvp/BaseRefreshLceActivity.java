@@ -1,58 +1,52 @@
 package com.example.sgr.mymvpframework.app.mvp;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.View;
-import android.widget.ImageView;
+import android.widget.Toast;
 
-import com.andview.refreshview.XRefreshView;
-import com.andview.refreshview.XRefreshViewFooter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.sgr.mymvpframework.R;
-import com.example.sgr.mymvpframework.app.view.LoadMoreLayout;
-import com.example.sgr.mymvpframework.app.view.PullToRefreshLayout;
 import com.tz.mvp.framework.base.presenter.MvpPresenter;
 import com.tz.mvp.framework.support.lce.MvpLceView;
 import com.tz.mvp.framework.support.lce.impl.MvpLceActivity;
 
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import in.srain.cube.views.ptr.PtrDefaultHandler;
-import in.srain.cube.views.ptr.PtrFrameLayout;
-import in.srain.cube.views.ptr.PtrHandler;
 
 /**
  * Created by Administrator on 2018/1/15/015.
  */
 
-public abstract class BaseRefreshLceActivity <M, V extends MvpLceView<M>, P extends MvpPresenter<V>> extends MvpLceActivity<M, V, P> implements PtrHandler{
+public abstract class BaseRefreshLceActivity <M, V extends MvpLceView<M>, P extends MvpPresenter<V>> extends MvpLceActivity<M, V, P> {
 
 //    protected ImmersionBar mImmersionBar; 沉浸式标题栏
     private Unbinder unbinder;
-    private LoadMoreLayout loadMoreLayout;
 
-    @BindView(R.id.refreshlayout)
-    PullToRefreshLayout refreshlayout;
 
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
+    private int page=1,pagesize=10;
+
+    @BindView(R.id.xrefreshview)
+    SwipeRefreshLayout mSwipeRefreshLayout;
 
 
     private BaseQuickAdapter recyclerAdapter;
     private LinearLayoutManager linearLayoutManager;
 
-    private boolean isDownRefresh = true;
+    private boolean isDownRefresh = true;//表示的是下拉刷新界面
 
     public boolean isDownRefresh() {
         return isDownRefresh;
     }
-    public PullToRefreshLayout getRefreshView() {
-        return refreshlayout;
-    }
+
 
     public BaseQuickAdapter getAdapter() {
         return recyclerAdapter;
@@ -80,26 +74,47 @@ public abstract class BaseRefreshLceActivity <M, V extends MvpLceView<M>, P exte
 
     }
 
-    //下拉刷新
-    @Override
-    public boolean checkCanDoRefresh(PtrFrameLayout frame, View content, View header) {
-        return PtrDefaultHandler.checkContentCanBePulledDown(frame, content, header);
-    }
-    //    下拉刷新监听
-    @Override
-    public void onRefreshBegin(PtrFrameLayout frame) {
-        refreshData(true);
-        refreshlayout.refreshComplete();
+    public void refresh(boolean isRefresh, List data) {
+        if(isRefresh){
+            page = 1;
+            recyclerAdapter.setEnableLoadMore(false);//这里的作用是防止下拉刷新的时候还可以上拉加载
+            setData(isRefresh, data);
+            recyclerAdapter.setEnableLoadMore(true);
+            mSwipeRefreshLayout.setRefreshing(false);
+        }else{
+            setData(isRefresh, data);
+        }
+
+
 
     }
 
+//将数据与适配器绑定
+    private void setData(boolean isRefresh, List data) {
+        page++;
+        final int size = data == null ? 0 : data.size();
+        if (isRefresh) {//下拉刷新
+            recyclerAdapter.setNewData(data);
+        } else {//上拉加载更多
+            if (size > 0) {
+                recyclerAdapter.addData(data);
+            }
+        }
+        if (size < pagesize) {
+            //第一页如果不够一页就不显示没有更多数据布局
+            recyclerAdapter.loadMoreEnd(isRefresh);
+            Toast.makeText(this, "没有更多的数据", Toast.LENGTH_SHORT).show();
+        } else {
+            recyclerAdapter.loadMoreComplete();
+        }
+    }
     /**
      * 初始化下拉刷新组件
      *
      *
      */
     public void initRefreshView() {
-        refreshlayout.setPtrHandler(this);
+        mSwipeRefreshLayout.setColorSchemeColors(Color.rgb(47, 223, 189));
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         linearLayoutManager = new LinearLayoutManager(this);
@@ -108,17 +123,20 @@ public abstract class BaseRefreshLceActivity <M, V extends MvpLceView<M>, P exte
         //绑定Adapter
         recyclerAdapter = bindAdapter();
         recyclerView.setAdapter(recyclerAdapter);
-        loadMoreLayout = new LoadMoreLayout(this, recyclerView, recyclerAdapter, new LoadMoreLayout.OnLoadMoreListener() {
-            boolean flag = false;
-
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
-            public void onLoadMore() {
-                refreshData(false);
-                loadMoreLayout.loadMoreComplete();
-                Log.e("zh", "加载更多");
+            public void onRefresh() {//下拉刷新
+                refreshData(true,page);
+
+
             }
         });
-        loadMoreLayout.loadMoreEnable(true);
+        recyclerAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
+            @Override
+            public void onLoadMoreRequested() {//上拉加载更多
+                refreshData(false,page);
+            }
+        });
 
     }
     public abstract BaseQuickAdapter bindAdapter();
@@ -141,7 +159,8 @@ public abstract class BaseRefreshLceActivity <M, V extends MvpLceView<M>, P exte
         //保存数据
     }
 
-    public void refreshData(boolean isDownRefresh) {
+    public void refreshData(boolean isDownRefresh,int page) {
+        this.page=page;
         this.isDownRefresh = isDownRefresh;
     }
 

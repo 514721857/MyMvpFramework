@@ -3,9 +3,10 @@ package com.example.sgr.mymvpframework.app.view;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.sgr.mymvpframework.R;
-import com.ldoublem.loadingviewlib.view.LVCircularSmile;
 import com.tz.mvp.framework.support.lce.impl.animator.DefaultLceAnimator;
 
 /**
@@ -14,24 +15,27 @@ import com.tz.mvp.framework.support.lce.impl.animator.DefaultLceAnimator;
  * E-mail:510278658@qq.com
  */
 
-public class LoadingAnimator extends DefaultLceAnimator {
+public class LoadingAnimatorC extends DefaultLceAnimator {
 
 
-    private LVCircularSmile loading;
+    private LoadingView loading;
 
 
     @Override
     public void showLoading(View loadingView, View contentView, View errorView) {
-        Log.e("LoadingAnimator","showLoading");
         super.showLoading(loadingView, contentView, errorView);
-        loading = (LVCircularSmile) loadingView.findViewById(R.id.lv_loading_smile);
-        loading.startAnim();
+        System.out.println("LoadingAnimatorC");
+        Log.e("LoadingAnimatorB","showLoading");
+        TextView textview_test=(TextView) loadingView.findViewById(R.id.textview_test);
+        textview_test.setText("wowo");
+        loading = (LoadingView) loadingView.findViewById(R.id.lv_loading);
+        loading.openAnimation();
     }
 
     @Override
     public void showContent(View loadingView, View contentView, @NonNull View errorView) {
         if (loading != null){
-            loading.stopAnim();
+            loading.closeAnimation();
         }
         loadingView.setVisibility(View.GONE);
         errorView.setVisibility(View.GONE);
@@ -42,7 +46,7 @@ public class LoadingAnimator extends DefaultLceAnimator {
     public void showErrorView(@NonNull View loadingView, @NonNull View contentView, View errorView) {
         super.showErrorView(loadingView, contentView, errorView);
         if (loading != null){
-            loading.stopAnim();
+            loading.closeAnimation();
         }
         loadingView.setVisibility(View.GONE);
         errorView.setVisibility(View.VISIBLE);

@@ -19,7 +19,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".LecTestActivity" />
-        <activity android:name=".LecListActivity"></activity>
+        <activity android:name=".LecListActivity" />
+        <activity android:name=".PullToRefreshActivity" />
+        <activity android:name=".LoadingActivity"></activity>
     </application>
 
 </manifest>

@@ -69,7 +69,7 @@ public class LecTestActivity extends MvpLceActivity<LoginBean,LecTestView,LecPre
     }
 
     @Override
-    public void loadData(boolean pullToRefresh) {
+    public void loadData(boolean pullToRefresh,int page) {
 
     }
 
