@@ -24,7 +24,7 @@ import butterknife.Unbinder;
  *
  *
  */
-public class LecTestActivity extends MvpLceActivity<LoginBean,LecTestView,LecPresenter> implements LecTestView{
+public class LecTestActivity extends MvpLceActivity<LecTestView,LecPresenter> implements LecTestView{
     @BindView(R.id.btn)
     Button btn;
 
@@ -64,7 +64,7 @@ public class LecTestActivity extends MvpLceActivity<LoginBean,LecTestView,LecPre
     }
 
     @Override
-    public void bindData(LoginBean data) {
+    public void bindData(Object data,String type) {
 
     }
 

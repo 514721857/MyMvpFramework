@@ -29,16 +29,16 @@ public class LecListPresenter extends BasePresenter<LecListView>{
      */
     public void getJbpList(String token,String type_c,int page){
         getView().showLoading(false);
-/*       commonModel.getJbpList(token,page, Config.pagesize,type_c, new HttpUtils.OnHttpResultListener() {
+    commonModel.getJbpList(token,page, Config.pagesize,type_c, new HttpUtils.OnHttpResultListener() {
             @Override
             public void onResult(Object result) {
                 //第二种情况：正确->请求成功
                 if (result == null){
                     //4、绑定数据->更新UI
-                    getView().bindData(null);
+                    getView().bindData(null,"");
 
                 }else {
-                    getView().bindData((ListBean) result);
+                    getView().bindData(result,"");
                 }
                 Log.e("bindData","PresenterbindData");
                 //5、显示UI->显示ContentView
@@ -55,7 +55,7 @@ public class LecListPresenter extends BasePresenter<LecListView>{
                 Log.e("bug",e.toString());
              getView().showError();
             }
-        });*/
+        });
 
     }
 

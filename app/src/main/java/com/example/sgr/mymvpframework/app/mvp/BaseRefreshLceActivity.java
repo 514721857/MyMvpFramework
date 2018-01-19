@@ -24,7 +24,7 @@ import butterknife.Unbinder;
  * Created by Administrator on 2018/1/15/015.
  */
 
-public abstract class BaseRefreshLceActivity <M, V extends MvpLceView<M>, P extends MvpPresenter<V>> extends MvpLceActivity<M, V, P> {
+public abstract class BaseRefreshLceActivity <V extends MvpLceView, P extends MvpPresenter<V>> extends MvpLceActivity<V, P> {
 
 //    protected ImmersionBar mImmersionBar; 沉浸式标题栏
     private Unbinder unbinder;
@@ -141,8 +141,8 @@ public abstract class BaseRefreshLceActivity <M, V extends MvpLceView<M>, P exte
     }
     public abstract BaseQuickAdapter bindAdapter();
     @Override
-    public void bindData(M data) {
-        super.bindData(data);
+    public void bindData(Object data,String type) {
+        super.bindData(data,type);
         //如果你是下拉刷新组件,那么我就处理
         //刷新UI界面
  /*       if (isDownRefresh()) {

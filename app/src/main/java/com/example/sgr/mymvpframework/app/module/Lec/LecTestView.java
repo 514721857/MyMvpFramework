@@ -8,6 +8,6 @@ import com.tz.mvp.framework.support.lce.MvpLceView;
  * Created by Administrator on 2018/1/12/012.
  */
 
-public interface LecTestView extends MvpLceView<LoginBean>{
+public interface LecTestView extends MvpLceView{
     void onLoginResult(LoginBean result);
 }

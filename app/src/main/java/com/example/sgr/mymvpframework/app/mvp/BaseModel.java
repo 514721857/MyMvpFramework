@@ -48,6 +48,25 @@ public class BaseModel implements MvpModel {
         return retrofit.create(service);
     }
 
+    public void buildObserve( Observable<Object> Mobservable,final HttpUtils.OnHttpResultListener onLceHttpResultListener){
+        Mobservable .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<Object>() {
+                    @Override
+                    public void onCompleted() {
+                        onLceHttpResultListener.onCompleted();
+                    }
 
+                    @Override
+                    public void onError(Throwable e) {
+                        onLceHttpResultListener.onError(new Exception(e));
+                    }
+
+                    @Override
+                    public void onNext(Object model) {
+                        onLceHttpResultListener.onResult(model);
+                    }});
+
+    }
 
 }

@@ -22,10 +22,7 @@ public class LoadingAnimatorB extends DefaultLceAnimator {
     public void showLoading(View loadingView, View contentView, View errorView) {
         super.showLoading(loadingView, contentView, errorView);
         loading = (LVCircularSmile) loadingView.findViewById(R.id.lv_loading_smile);
-        TextView textview_test=(TextView) loadingView.findViewById(R.id.textview_test);
-        textview_test.setText("wowo");
         loading.setViewColor(Color.rgb(144, 238, 146));
-        Log.e("LoadingAnimatorB","showLoading");
         loading.startAnim();
 
     }
@@ -54,7 +51,6 @@ public class LoadingAnimatorB extends DefaultLceAnimator {
         loadingView.setVisibility(View.GONE);
         errorView.setVisibility(View.GONE);
         contentView.setVisibility(View.VISIBLE);
-        Log.e("LoadingAnimatorB","showContent");
     }
 
     @Override

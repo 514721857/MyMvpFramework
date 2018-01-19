@@ -4,7 +4,6 @@ import android.content.Context;
 
 import com.example.sgr.mymvpframework.app.bean.ListBean;
 import com.example.sgr.mymvpframework.app.bean.LoginBean;
-import com.example.sgr.mymvpframework.app.bean.Result;
 import com.example.sgr.mymvpframework.app.http.HttpService;
 import com.example.sgr.mymvpframework.app.http.HttpUtils;
 import com.example.sgr.mymvpframework.app.mvp.BaseModel;
@@ -12,6 +11,7 @@ import com.example.sgr.mymvpframework.app.mvp.BaseModel;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import rx.Observable;
 import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -72,15 +72,28 @@ public class CommonModel extends BaseModel {
      * @param onLceHttpResultListener
      */
     public void getJbpList(String access_token,int p,int size,String type_c,final HttpUtils.OnHttpResultListener onLceHttpResultListener){
+        HttpService essenceService= buildService(HttpService.class);
+        buildObserve((Observable)essenceService.getLceJbpList(access_token, p, size, type_c),onLceHttpResultListener);
+    }
+
+    /**
+     * 获取聚宝盆里的下载列表
+     * @param access_token
+     * @param p
+     * @param size
+     * @param type_c
+     * @param onLceHttpResultListener
+     */
+    public void getJbpListBack(String access_token,int p,int size,String type_c,final HttpUtils.OnHttpResultListener onLceHttpResultListener){
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(getServerUrl())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create()).build();
-                 HttpService essenceService = retrofit.create(HttpService.class);
-                 essenceService.getLceJbpList(access_token, p, size, type_c)
+                HttpService essenceService = retrofit.create(HttpService.class);
+                essenceService.getLceJbpList(access_token, p, size, type_c)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<ListBean>() {
+                .subscribe(new Observer<Object>() {
                     @Override
                     public void onCompleted() {
                         onLceHttpResultListener.onCompleted();
@@ -92,11 +105,12 @@ public class CommonModel extends BaseModel {
                     }
 
                     @Override
-                    public void onNext(ListBean model) {
+                    public void onNext(Object model) {
                         onLceHttpResultListener.onResult(model);
                     }
                 });
     }
+
 
 
 }

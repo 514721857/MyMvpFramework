@@ -18,7 +18,7 @@ import com.tz.mvp.framework.base.presenter.MvpPresenter;
 
 import z.sye.space.library.PageStateLayout;
 
-public class LecListActivity extends BaseRefreshLceActivity<ListBean,LecListView,LecListPresenter> implements LecListView {
+public class LecListActivity extends BaseRefreshLceActivity<LecListView,LecListPresenter> implements LecListView {
     @Override
     public BaseQuickAdapter bindAdapter() {
         return new JbpAdapter();
@@ -31,9 +31,10 @@ public class LecListActivity extends BaseRefreshLceActivity<ListBean,LecListView
     @Override
     protected void initData() {
         super.initData();
+        setLceAnimator(new LoadingAnimatorB());
         loadData(false,1);
 //        setLceAnimator(new LoadingAnimatorB());
-        setLceAnimator(new LoadingAnimatorC());
+//        setLceAnimator(new LoadingAnimatorC());
     }
 
     //刷新数据->下拉刷新
@@ -45,11 +46,11 @@ public class LecListActivity extends BaseRefreshLceActivity<ListBean,LecListView
 
     //绑定数据
     @Override
-    public void bindData(ListBean model) {
+    public void bindData(Object model,String type) {
         //super作用：框架内部封装了下拉刷新头部和上拉加载底部隐藏和显示逻辑(每一个功能模块都是重复)
-        super.bindData(model);
-
-        refresh(isDownRefresh(),model.getData());
+        super.bindData(model,type);
+        ListBean tempBean=(ListBean)model;
+        refresh(isDownRefresh(),tempBean.getData());
 //        getAdapter().refreshAdapter(isDownRefresh(),model.getList(),model);
     }
 
